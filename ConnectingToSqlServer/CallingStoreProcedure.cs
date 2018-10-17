@@ -52,6 +52,7 @@ namespace MyNameSpace
                 DataTable result = null;
                 using (SqlConnection cnn = new SqlConnection(connectionString))
                 {
+					//you can find how to create this store procedure on https://github.com/sigfried1982/SQL-Server-tips/blob/master/PassingDataTableAsParameterToAnStoreProcedure/CreateSQLServerStoreProcedureUsingTableAsParameter.sql
                     var command = new SqlCommand("dbo.myStoreProcedure", cnn);
                     command.CommandType = CommandType.StoredProcedure;
 
@@ -61,6 +62,7 @@ namespace MyNameSpace
                     //Specify the parameter as struct datatype
                     secondParam.SqlDbType = SqlDbType.Structured;
                     //Specify the datatype name in the database
+					//you can find how to create this datatype on https://github.com/sigfried1982/SQL-Server-tips/blob/master/PassingDataTableAsParameterToAnStoreProcedure/CreateSQLServerDataType.sql
                     secondParam.TypeName = "dbo.types_myDataType";
                     command.Parameters.Add(secondParam);
 
